@@ -1,0 +1,6 @@
+User Stories
+
+1. As a user I want to be able to add new tasks to do.
+2. As a user I would like to see what tasks are done.
+3. As a user I would like to see which tasks are not done.
+4. As a user I want to be able to delete tasks.
