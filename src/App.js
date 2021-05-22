@@ -7,12 +7,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 
-
-
 function Home(){
   return(
   <>
- 
 
   <div className="container">
     <div className="">
@@ -26,33 +23,80 @@ function Home(){
   
 function Todo(){
  
-const [taskTxt, setText] = useState([]);
+/*const [inputTxt, setInput] = useState([
+  {
+    text: "Learn about React",
+    isCompleted: false
+  }
+]);
 
-const updateItemTxt = async (event) => {
-  setText(event.currentTarget.value);
-};
 
-const addItem = async () => {
-    
-};
 
+ // const addItem = e => {
+  //  e.preventDefault();
+ //   if (!value) return;
+ //   addTodo(value);
+  //  setValue("");
+ // };
+  const addTodo = text => {
+    const newTodos = [...inputTxt, { text }];
+    setInput(newTodos);
+  };
+*/
+
+
+
+const [searches, setSearches] = useState([])
+const [query, setQuery] = useState("")
+
+// Adds the search to list when add button clicked
+ //setSearches(searches => [...searches, searches.concat(query)])
+const handleClick = (e) => {
+setSearches(searches => searches.concat(query))
+console.log(e);
+}
+
+// Update input box
+const updateQuery = async (e) => {
+ setQuery(e.currentTarget.value)
+ console.log(e.currentTarget.value);
+}
+
+//Displays tasks
+const Search = ({ query }) => <ul className="" ><li className="d-block m-3 p-3 bg-dark text-white">{query}</li></ul>
+
+//Adds search when enter key is pressed
+const keyPressed = ({ key }) => {
+  if (key === "Enter") {
+    handleClick()
+  }
+}
 
   return(
   <>
   <div className="p-2">
-    <div className=" ">
-         <label for="todolist" className="form-label ">Tasks:</label>
+    <div className="m-auto ">
+         <label for="todolist" className="form-label ">ENTER YOUR TASKS FOR TODAY:</label>
+         <input  value={query} onChange={updateQuery}   onKeyPress={keyPressed} className="form-control " type="search" ></input>
+         <button onClick= {handleClick}  className="btn btn-secondary mt-3 w-100 " type="submit">Add</button>  
 
-         <input value={taskTxt} onChange={updateItemTxt} className="form-control " type="search" ></input>
-        
-         <button onClick={addItem} className="btn btn-secondary mt-3 w-100 " type="submit">Add</button>
     </div>  
-    <p>Txt is:  {taskTxt}</p> 
-   {<ul>
-     <li >{taskTxt}</li>
-    </ul>} 
-              
+
+   
+   
   </div> 
+  <div >
+  <ul className="container w-75 ">
+        {searches.map((search, i) => (
+           <Search
+            key={i}
+            index={i}
+            query={search}
+        />
+        ))}
+      </ul>   
+  </div>
+  
   </>
   ); }
 
@@ -82,7 +126,7 @@ const addItem = async () => {
   <button className="btn btn-primary w-100 p-2 mt-3" type="button">Send</button>
  </div>
  
-
+ 
 
 
   </>
@@ -124,8 +168,8 @@ function App() {
     <Mynav/>
   
     <Switch>
-    <Route path="/Home" component={Home}/>
-    <Route path="/Todo" component={Todo}/>
+    <Route path="/Home" component={Home }/> 
+    <Route path="/Todo" component={Todo} />
     <Route path="/Contact" component={Contact}/>
     </Switch>
 
