@@ -1,24 +1,57 @@
-*{box-sizing: border-box; margin:0;
-padding: 0;
+*{box-sizing: border-box; margin:0; padding: 0; background: rgb(177, 86, 86);font-size: 1em;font-weight:700}
+
+
+
+/* Home page*/
+.homeContainer{margin-top: 125px; text-align:center;}
+
+
+
+/* Navbar*/
+.nav{ background: rgb(8, 8, 8); }
+.nav-link{background: rgb(0, 0, 0); color: white; font-size: 1.3em;}
+.nav-link:hover{color: rgb(228, 189, 189);  }
+.navbar-brand{ color: rgb(177, 86, 86);background: rgb(0, 0, 0); font-size:1.5em;}
+.navbar-brand:hover{color: rgb(177, 86, 86); background: black;}
+ul{  list-style: none; }
+
+
+/* Input container */
+.wrapper{margin-top: 120px; display: flex; background: rgb(0, 0, 0); padding: 25px; border: 10%; border-radius: 40px}
+.input-wrapper{gap: 13px; padding: 5px ; background: black;}
+.btn{ font-weight: 600;}
+.btn:hover{ font-size: 1.1em;}
+
+/* Output for tasks and add button */
+.taskInputBox{ margin-top: 20%; background: rgb(0, 0, 0); border-radius: 40px; color: white;}
+.output{ margin: 45px;padding: 2px;font-size: 1.1em;   }
+
+
+
+
+/* buttons for completing or deleting task */
+.btn-complete{   box-shadow: 2px 2px 4px rgb(180, 182, 180);}
+.btn-complete:hover{  font-size: 1em; }
+.btn-delete{ box-shadow: 2px 2px 4px rgb(180, 182, 180);}
+.btn-delete:hover{ font-size: 1em;  }
+
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width:800px) {
+    
+.output{ display: flex;  flex-flow: column wrap; align-items: center;  }
+.input-container{display: flex;  flex-flow: column wrap;  align-items: center; }
+.task-output{display:flex; flex-flow:column wrap; align-items: center;}
+  
 }
 
-.nav{
-background: rgb(135, 180, 135);
-}
 
-.nav-link{color: rgb(114, 116, 114);
-font-size: 1.5em;
-}
+ @media screen and (max-width: 300px) {
+.nav-container{ display:flex; flex-flow:column wrap; align-items: center;} ;
+.output{ display: flex;  flex-flow:column wrap; align-items: center;  }
+.input-container{display: flex;  flex-flow: column wrap; align-items: center; }
+.task-output{display:flex; flex-flow:column wrap; align-items: center;}
 
-.navbar-brand{
-color: honeydew;
-font-size:3em;
+  
 }
-
-.btn{ 
-    float:right;
-}
-
-ul{ 
-   
-    list-style: none;}

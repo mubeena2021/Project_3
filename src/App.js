@@ -5,106 +5,97 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-
+/* HOME PAGE */
 
 function Home(){
   return(
   <>
-
   <div className="container">
-    <div className="">
-         <h1> Welcome! Click on Todo to create tasks</h1>
+    <div className="homeContainer">
+         <h2>Welcome!</h2>
+         <h2>Click on Todo to create tasks</h2>
     </div>
   </div> 
   </>
   ); }
 
 
-  
+  /* TODO PAGE */
+
 function Todo(){
- 
-/*const [inputTxt, setInput] = useState([
-  {
-    text: "Learn about React",
-    isCompleted: false
-  }
-]);
 
-
-
- // const addItem = e => {
-  //  e.preventDefault();
- //   if (!value) return;
- //   addTodo(value);
-  //  setValue("");
- // };
-  const addTodo = text => {
-    const newTodos = [...inputTxt, { text }];
-    setInput(newTodos);
-  };
-*/
-
-
-
-const [searches, setSearches] = useState([])
-const [query, setQuery] = useState("")
+const [query, setQuery] = useState(null);
+const [itemList, updateList] = useState([]);
+//const [currentFilter, setCurrentFilter] = useState('');
 
 // Adds the search to list when add button clicked
- //setSearches(searches => [...searches, searches.concat(query)])
-const handleClick = (e) => {
-setSearches(searches => searches.concat(query))
-console.log(e);
-}
 
-// Update input box
-const updateQuery = async (e) => {
+//setSearches(searches => [...searches, searches.concat(query)])
+
+const addToList = () => {
+updateList([...itemList,{ item:query, completed: false, key:Date.now()} ]);
+setQuery("");
+
+};
+ // e.preventDefault();
+//setSearches(searches => searches.concat(query))
+//setCurrentFilter(currentFilter => currentFilter.concat(query));
+//console.log("itemlist", itemList);
+
+// Updates input box
+const updateQuery =  e => {
  setQuery(e.currentTarget.value)
- console.log(e.currentTarget.value);
-}
+  console.log(e.currentTarget.value)
+};
 
-//Displays tasks
-const Search = ({ query }) => <ul className="" ><li className="d-block m-3 p-3 bg-dark text-white">{query}</li></ul>
 
 //Adds search when enter key is pressed
-const keyPressed = ({ key }) => {
-  if (key === "Enter") {
-    handleClick()
-  }
-}
+//const keyPressed = ({ key }) => {
+  //if (key === "Enter") {
+   // handleClick()
+  //}
+//}
 
   return(
   <>
-  <div className="p-2">
-    <div className="m-auto ">
-         <label for="todolist" className="form-label ">ENTER YOUR TASKS FOR TODAY:</label>
-         <input  value={query} onChange={updateQuery}   onKeyPress={keyPressed} className="form-control " type="search" ></input>
-         <button onClick= {handleClick}  className="btn btn-secondary mt-3 w-100 " type="submit">Add</button>  
+ <div className="container ">
+  <div className=" container wrapper">
+    <div className="container d-flex justify-content-between input-wrapper">
+    <input value={query} onChange={updateQuery} className="form-control w-75" type="text"></input>
+    <button onClick={addToList} className="btn btn-success w-25">Add</button>
+    </div>
 
-    </div>  
-
-   
-   
-  </div> 
-  <div >
-  <ul className="container w-75 ">
-        {searches.map((search, i) => (
-           <Search
-            key={i}
-            index={i}
-            query={search}
-        />
-        ))}
-      </ul>   
   </div>
+    <List itemslist = {itemList}/>
+ </div>
   
   </>
   ); }
 
 
+function List(props){
+console.log(props);
+return (
+<>
+{props.itemslist.map((key) =>{
+  return <div className="container  w-75"><div className="taskInputBox" >{key.item}</div></div>
+})
+
+}
+
+
+</>
+
+
+
+);
+}
+
+
+/* CONTACT PAGE */
   function Contact(){
     return(
   <>
-
   <div className ="m-2">
   <label for ="exampleFormControlInput1" className ="form-label"> First Name:</label>
   <input type ="text" className ="form-control  " id ="FirstName" placeholde r="First Name"></input>
@@ -117,7 +108,6 @@ const keyPressed = ({ key }) => {
   <label for="exampleFormControlInput1" className="form-label">Email:</label>
   <input type="email" className="form-control" id="Email" placeholder="email@.com"></input>
   </div>
-
   <div className="m-2">
   <label for="exampleFormControlTextarea1" className="form-label ">Message:</label>
   <textarea className=" form-control " id="Message" rows="5" placeholder="Message"></textarea>
@@ -125,20 +115,15 @@ const keyPressed = ({ key }) => {
   <div className="m-2">
   <button className="btn btn-primary w-100 p-2 mt-3" type="button">Send</button>
  </div>
- 
- 
-
-
   </>
-  ); } 
+); } 
   
 
-  
+/* NAVAGATION  */
 function Mynav(){
   return(
 <>
-
-   <ul className=" nav pl-2 ">
+   <ul className=" container nav nav-container pl-2 ">
       <a className="navbar-brand " href="/Home">MyTasks</a>
       <li className="nav-item">
          <a className="nav-link" href="/Todo">Todo</a>
@@ -147,7 +132,6 @@ function Mynav(){
          <a className="nav-link" href="/Contact">Contact</a>
     </li> 
    </ul>
-
 </>
 ); } 
 
@@ -158,17 +142,15 @@ function Mynav(){
 
 function App() {
   
-  
   return (
 
-
    <Router>
-    <div className="container-fluid" >
+    <div className="container d-flex flex-column w-100 ">
     
     <Mynav/>
-  
+   
     <Switch>
-    <Route path="/Home" component={Home }/> 
+    <Route path="/Home" component={Home} />
     <Route path="/Todo" component={Todo} />
     <Route path="/Contact" component={Contact}/>
     </Switch>
