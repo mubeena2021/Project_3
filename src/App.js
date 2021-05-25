@@ -23,20 +23,26 @@ function Home(){
   /* TODO PAGE */
 
 function Todo(){
-
 const [query, setQuery] = useState(null);
 const [itemList, updateList] = useState([]);
+
 //const [currentFilter, setCurrentFilter] = useState('');
-
 // Adds the search to list when add button clicked
-
 //setSearches(searches => [...searches, searches.concat(query)])
 
+//Adds task when add button is clicked
 const addToList = () => {
 updateList([...itemList,{ item:query, completed: false, key:Date.now()} ]);
 setQuery("");
-
 };
+
+//Adds task when enter key is pressed
+const keyPressed = ({ key }) => {
+  if (key === "Enter") {
+   addToList()
+  }
+}
+
  // e.preventDefault();
 //setSearches(searches => searches.concat(query))
 //setCurrentFilter(currentFilter => currentFilter.concat(query));
@@ -45,51 +51,65 @@ setQuery("");
 // Updates input box
 const updateQuery =  e => {
  setQuery(e.currentTarget.value)
-  console.log(e.currentTarget.value)
 };
 
-
-//Adds search when enter key is pressed
-//const keyPressed = ({ key }) => {
-  //if (key === "Enter") {
-   // handleClick()
-  //}
-//}
 
   return(
   <>
  <div className="container ">
   <div className=" container wrapper">
     <div className="container d-flex justify-content-between input-wrapper">
-    <input value={query} onChange={updateQuery} className="form-control w-75" type="text"></input>
+    <input value={query} onChange={updateQuery} onKeyPress={keyPressed} className="form-control w-75" type="text"></input>
     <button onClick={addToList} className="btn btn-success w-25">Add</button>
     </div>
 
   </div>
-    <List itemslist = {itemList}/>
+    <List itemslist = {itemList} updateList={updateList}/>
  </div>
   
   </>
   ); }
 
 
+// Creates list of tasks
 function List(props){
-console.log(props);
+
+const deleteItem = (key) => {
+const newlist = props.itemslist.filter((item) => {
+ return item.key !== key;
+});
+props.updateList(newlist);
+};
+
+const completeItem = (key) => {
+const itemComplete = props.itemslist.map((k) =>{
+  //console.log( k.key === key);
+if(k.key === key){
+  return{  ...k , completed: true}
+ 
+}
+return key;
+})
+props.updateList(itemComplete)
+}
+
+  
+
+
+console.log({props});
 return (
 <>
 {props.itemslist.map((key) =>{
-  return <div className="container  w-75"><div className="taskInputBox" >{key.item}</div></div>
+  return <div className="container taskInputBox w-75">
+            <p className="taskBox " key={key.key}> {key.item} </p>
+            <button onClick={ ()=>completeItem(key.key) }className=" complete-Btn btn btn-sm btn-success">Complete</button>
+            <button onClick={ ()=>deleteItem(key.key)} className=" del-Btn btn btn-sm btn-success">Delete</button>
+         </div>
 })
-
 }
-
-
 </>
+);}
 
-
-
-);
-}
 
 
 /* CONTACT PAGE */
@@ -134,9 +154,6 @@ function Mynav(){
    </ul>
 </>
 ); } 
-
-
-
 
 
 

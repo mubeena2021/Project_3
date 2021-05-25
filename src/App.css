@@ -17,16 +17,19 @@ ul{  list-style: none; }
 
 
 /* Input container */
-.wrapper{margin-top: 120px; display: flex; background: rgb(0, 0, 0); padding: 25px; border: 10%; border-radius: 40px}
+.wrapper{margin-top: 120px; margin-bottom: 60px; display: flex; background: rgb(0, 0, 0); padding: 25px; border: 10%;}
 .input-wrapper{gap: 13px; padding: 5px ; background: black;}
 .btn{ font-weight: 600;}
 .btn:hover{ font-size: 1.1em;}
 
 /* Output for tasks and add button */
-.taskInputBox{ margin-top: 20%; background: rgb(0, 0, 0); border-radius: 40px; color: white;}
-.output{ margin: 45px;padding: 2px;font-size: 1.1em;   }
-
-
+.taskInputBox{ display: flex; justify-content: space-between; align-items: center; background: rgb(0, 0, 0);  color: white; border: 3px outset rgb(92, 31, 41)}
+.taskBox{margin:5px; padding:2px; align-items: center;  background: black;  }
+.output{ margin: 45px; padding: 2px;font-size: 1.1em;   }
+.complete-btn{margin: 2px; padding: 3px;}
+.complete-btn:hover{outline:none; border: none;}
+.btn-delete{padding:3px;}
+.btn-delete:hover{outline:none; border: none;}
 
 
 /* buttons for completing or deleting task */
