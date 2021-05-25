@@ -1,9 +1,9 @@
-*{box-sizing: border-box; margin:0; padding: 0; background: rgb(177, 86, 86);font-size: 1em;font-weight:700}
+*{box-sizing: border-box; margin:0; padding: 0; background: rgb(185, 71, 71);font-size: 16px; }
 
 
 
 /* Home page*/
-.homeContainer{margin-top: 125px; text-align:center;}
+.homeContainer{margin-top: 125px; text-align:center; }
 
 
 
@@ -11,42 +11,50 @@
 .nav{ background: rgb(8, 8, 8); }
 .nav-link{background: rgb(0, 0, 0); color: white; font-size: 1.3em;}
 .nav-link:hover{color: rgb(228, 189, 189);  }
-.navbar-brand{ color: rgb(177, 86, 86);background: rgb(0, 0, 0); font-size:1.5em;}
+.navbar-brand{ color: rgb(221, 127, 127);background: rgb(0, 0, 0); font-size:1.5em;}
 .navbar-brand:hover{color: rgb(177, 86, 86); background: black;}
 ul{  list-style: none; }
 
 
 /* Input container */
-.wrapper{margin-top: 120px; margin-bottom: 60px; display: flex; background: rgb(0, 0, 0); padding: 25px; border: 10%;}
-.input-wrapper{gap: 13px; padding: 5px ; background: black;}
+.wrapper{margin-top: 30px; margin-bottom: 60px; display: flex; background: rgb(0, 0, 0); padding: 25px; border: 10%;}
+.input-wrapper{gap: 13px; padding: 5px ; background: black; }
 .btn{ font-weight: 600;}
 .btn:hover{ font-size: 1.1em;}
 
 /* Output for tasks and add button */
-.taskInputBox{ display: flex; justify-content: space-between; align-items: center; background: rgb(0, 0, 0);  color: white; border: 3px outset rgb(92, 31, 41)}
-.taskBox{margin:5px; padding:2px; align-items: center;  background: black;  }
-.output{ margin: 45px; padding: 2px;font-size: 1.1em;   }
-.complete-btn{margin: 2px; padding: 3px;}
+.taskInputBox{ display: flex; flex-flow: row ; justify-content: space-around; align-items: center;  background: rgb(0, 0, 0);  color: white; border: 3px dotted rgb(250, 244, 169) ; margin-bottom: 5px; padding: 7px;}
+.taskBox{ margin:7px; padding:5px; align-items: center;  background: black;  }
+.output{ margin:30px; padding: 2px;font-size: 1.1em;   }
+.complete-btn{  margin: 5px; padding: 3px;}
 .complete-btn:hover{outline:none; border: none;}
-.btn-delete{padding:3px;}
+.btn-delete{ padding:3px;}
 .btn-delete:hover{outline:none; border: none;}
 
 
 /* buttons for completing or deleting task */
-.btn-complete{   box-shadow: 2px 2px 4px rgb(180, 182, 180);}
+.btn-complete{   box-shadow: 2px 2px 4px rgb(180, 182, 180); border-radius: 25px;}
 .btn-complete:hover{  font-size: 1em; }
-.btn-delete{ box-shadow: 2px 2px 4px rgb(180, 182, 180);}
+.btn-delete{ box-shadow: 2px 2px 4px rgb(180, 182, 180); border-radius: 25px;}
 .btn-delete:hover{ font-size: 1em;  }
+
+.completed{ color: green; font-style:italic; text-decoration: line-through rgb(38, 160, 38);}
+.contactContainer {width: 50% }
+.contactBtn{float: right}
+.filter-btn{display: flex; flex-flow: row ; justify-content: center; align-items: center; margin-bottom: 7px;}
+
+.viewContainer{display: flex ; flex-flow: column; border: 10px solid black}
 
 
 
 /* MEDIA QUERIES */
 @media screen and (max-width:800px) {
-    
+.nav-container{display: flex;  flex-flow: column wrap; align-items: center; }  
 .output{ display: flex;  flex-flow: column wrap; align-items: center;  }
 .input-container{display: flex;  flex-flow: column wrap;  align-items: center; }
 .task-output{display:flex; flex-flow:column wrap; align-items: center;}
-  
+.contactContainer { width: 100}
+
 }
 
 
@@ -55,6 +63,9 @@ ul{  list-style: none; }
 .output{ display: flex;  flex-flow:column wrap; align-items: center;  }
 .input-container{display: flex;  flex-flow: column wrap; align-items: center; }
 .task-output{display:flex; flex-flow:column wrap; align-items: center;}
+.taskInputBox{display:flex; flex-flow:column; gap: 5px; align-items: center; }
+}
 
-  
+@media screen and (max-width: 600px) {
+.taskInputBox{display:flex; flex-flow:column; gap: 5px; align-items: center; }
 }
