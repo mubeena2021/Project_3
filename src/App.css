@@ -39,10 +39,9 @@ ul{  list-style: none; }
 .btn-delete:hover{ font-size: 1em;  }
 
 .completed{ color: green; font-style:italic; text-decoration: line-through rgb(38, 160, 38);}
-.contactContainer {width: 50% }
+.contactContainer {margin-top: 25px }
 .contactBtn{float: right}
 .filter-btn{display: flex; flex-flow: row ; justify-content: center; align-items: center; margin-bottom: 7px;}
-
 .viewContainer{display: flex ; flex-flow: column; border: 10px solid black}
 
 

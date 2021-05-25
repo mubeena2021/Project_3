@@ -23,7 +23,7 @@ function Todo(){
 
 const [query, setQuery] = useState("");
 const [itemList, updateList] = useState([]);
-const [filter, setFilter] = useState('All');
+const [filter, setFilter] = useState([]);
 
 
 //Adds task when add button is clicked
@@ -65,9 +65,20 @@ return(
 
 
 const allTasks = (e) => {
- e.itemslist.map((k) =>{
-  console.log(k, "ALL button is clicked");
- })}
+    e.itemslist.map((k) =>{
+console.log(k, "ALL button is clicked")
+})}
+   
+
+ const completeTasks = (e) => {
+  e.itemslist.map((k) =>{
+   console.log(k, "complete button is clicked");
+  })}
+
+  const incompleteTasks = (e) => {
+    e.itemslist.map((k) =>{
+     console.log(k, "incomplete button is clicked");
+    })}
 
 
 function View(props){
@@ -80,10 +91,10 @@ function View(props){
          <button onClick={ ()=>allTasks(props)}  className="btn btn-secondary " >
           All 
           </button>
-        <button  className="btn btn-secondary " >
+        <button onClick={ ()=>completeTasks(props)} className="btn btn-secondary " >
           Completed 
         </button>
-        <button className="btn btn-secondary " >
+        <button onClick={ ()=>incompleteTasks(props)}className="btn btn-secondary " >
           Incomplete
         </button>
         </div>
@@ -100,6 +111,7 @@ function List(props){
   });
   props.updateList(newlist);
   };
+
   const completeItem = (key) => {
   const itemComplete = props.itemslist.map((k) =>{
     //console.log( k.key === key);
