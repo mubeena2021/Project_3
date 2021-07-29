@@ -1,17 +1,15 @@
-*{box-sizing: border-box; margin:0; padding: 0; background: rgb(185, 71, 71);font-size: 16px; }
-
+*{box-sizing: border-box; margin:0; padding: 0; background: rgb(88, 60, 84);font-size: 18px; }
 
 
 /* Home page*/
 .homeContainer{margin-top: 125px; text-align:center; }
 
 
-
 /* Navbar*/
 .nav{ background: rgb(8, 8, 8); }
-.nav-link{background: rgb(0, 0, 0); color: white; font-size: 1.3em;}
-.nav-link:hover{color: rgb(228, 189, 189);  }
-.navbar-brand{ color: rgb(221, 127, 127);background: rgb(0, 0, 0); font-size:1.5em;}
+.nav-link{background: rgb(0, 0, 0); color: white; font-size: 1.5em;}
+.nav-link:hover{color: rgb(177, 86, 86);  }
+.navbar-brand{ color: rgb(221, 127, 127);background: rgb(0, 0, 0); font-size:1em;}
 .navbar-brand:hover{color: rgb(177, 86, 86); background: black;}
 ul{  list-style: none; }
 
@@ -19,7 +17,7 @@ ul{  list-style: none; }
 /* Input container */
 .wrapper{margin-top: 30px; margin-bottom: 60px; display: flex; background: rgb(0, 0, 0); padding: 25px; border: 10%;}
 .input-wrapper{gap: 13px; padding: 5px ; background: black; }
-.btn{ font-weight: 600;}
+.btn{ font-weight: 600; }
 .btn:hover{ font-size: 1.1em;}
 
 /* Output for tasks and add button */
@@ -53,7 +51,6 @@ ul{  list-style: none; }
 .input-container{display: flex;  flex-flow: column wrap;  align-items: center; }
 .task-output{display:flex; flex-flow:column wrap; align-items: center;}
 .contactContainer { width: 100}
-
 }
 
 
